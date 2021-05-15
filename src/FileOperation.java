@@ -6,12 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileOperation {
-    User user = new User();
+    // User user = new User();
 
     public void writeFile(User user) {
         BufferedWriter bw = null;
         try {
-
             bw = new BufferedWriter(new FileWriter("student_data.txt", true));
             String data = user.firstName + " " + user.lastName + " " + user.gender + " " + user.address + " "
                     + user.contact + " " + user.rollNo + " " + user.program + " " + user.javaMarks + " "
@@ -50,12 +49,13 @@ public class FileOperation {
                 user.setMacroMarks(arr[10]);
 
                 list.add(user);
+                line = br.readLine();
             }
-
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
+       
     }
 }

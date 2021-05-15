@@ -6,7 +6,7 @@ import java.io.IOException;
 public class UserMenu {
     JFrame frame = new JFrame();
     // pannel's to add components
-
+    
     // Getting user data in text
     JTextField textFirstName = null;
     JTextField textLastName = null;
@@ -17,7 +17,7 @@ public class UserMenu {
     JTextField textMath = null;
     JTextField textEnglish = null;
     JTextField textMacro = null;
-
+    
     // getting user data in radiobuttons
     JRadioButton btnMale = null;
     JRadioButton btnFemale = null;
@@ -25,19 +25,20 @@ public class UserMenu {
     ButtonGroup btnGender = null;
     // store miltiple data with select one feature
     JComboBox comboProgram = null;
-
+    
     // Buttons
     JButton btnAdd = null;
     JButton btnDisplay = null;
     JButton btnReset = null;
     JButton btnCancel = null;
 
-    UserMenu() throws IOException {
-        frame = new JFrame("User Menu");
+    UserMenu() {
+    
+    frame = new JFrame("User Menu");
         // panels
         JPanel panelTop = new JPanel();
         JPanel panelGender = new JPanel();
-        JPanel panelProgram = new JPanel();
+        // JPanel panelProgram = new JPanel();
         JPanel panelMain = new JPanel();
         JPanel panelButton = new JPanel();
 
@@ -77,7 +78,7 @@ public class UserMenu {
         btnGender.add(btnFemale);
 
         // Program
-        String[] programs = { "BCIS", "BCA", "BIT", "BSCIT", "BIM" };
+        String[] programs = { "---", "BCIS", "BCA", "BIT", "BSCIT", "BIM" };
 
         comboProgram = new JComboBox(programs);
 
@@ -86,7 +87,7 @@ public class UserMenu {
         panelGender.add(btnFemale);
         panelTop.setLayout(new GridLayout(12, 2, 10, 10));
         // panelGender.setLayout();
-        panelProgram.setLayout(new GridLayout(4, 2, 10, 10));
+        // panelProgram.setLayout(new GridLayout(4, 2, 10, 10));
         panelButton.setLayout(new FlowLayout());
 
         // buttons
@@ -140,7 +141,7 @@ public class UserMenu {
         panelTop.add(textMacro);
 
         panelMain.add(panelTop);
-        panelMain.add(panelProgram);
+        // panelMain.add(panelProgram);
 
         // adding buttons
         panelButton.add(btnAdd);
@@ -158,23 +159,24 @@ public class UserMenu {
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // variables to store data that is entered in dashboard
-                String firstName = textFirstName.getText().toString();
-                String lastName = textLastName.getText().toString();
-                String gender = "";
-                String address = textAddress.getText().toString();
-                String contact = textContact.getText().toString();
-                String rollNo = textRollno.getText().toString();
-                String program = comboProgram.getSelectedItem().toString();
+                // String firstName = textFirstName.getText().toString();
+                // String lastName = textLastName.getText().toString();
+                // String gender = "";
+                // String address = textAddress.getText().toString();
+                // String contact = textContact.getText().toString();
+                // String rollNo = textRollno.getText().toString();
+                // String program = comboProgram.getSelectedItem().toString();
 
                 // marks
-                String javaMarks = textJava.getText().toString();
-                String mathMarks = textMath.getText().toString();
-                String englishMarks = textEnglish.getText().toString();
-                String macroMarks = textMacro.getText().toString();
+                // String javaMarks = textJava.getText().toString();
+                // String mathMarks = textMath.getText().toString();
+                // String englishMarks = textEnglish.getText().toString();
+                // String macroMarks = textMacro.getText().toString();
                 // Finding gender
+                String gender = "";
                 if (btnMale.isSelected()) {
                     gender = "Male";
-                } else if(btnFemale.isSelected()) {
+                } else if (btnFemale.isSelected()) {
                     gender = "Female";
                 } else {
                     gender = "-";
@@ -185,21 +187,35 @@ public class UserMenu {
                 FileOperation fo = new FileOperation();
 
                 // passing data entred in dashboard to the user object
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
+                // user.setFirstName(firstName);
+                // user.setLastName(lastName);
+                // user.setGender(gender);
+                // user.setAddress(address);
+                // user.setContact(contact);
+                // user.setRollno(rollNo);
+                // user.setProgram(program);
+                // // marks
+                // user.setJavaMarks(javaMarks);
+                // user.setMathMarks(mathMarks);
+                // user.setEnglishMarks(englishMarks);
+                // user.setMacroMarks(macroMarks);
+
+                user.setFirstName(textFirstName.getText().toString());
+                user.setLastName(textLastName.getText().toString());
                 user.setGender(gender);
-                user.setAddress(address);
-                user.setContact(contact);
-                user.setRollno(rollNo);
-                user.setProgram(program);
+                user.setAddress(textAddress.getText().toString());
+                user.setContact(textContact.getText().toString());
+                user.setRollno(textRollno.getText().toString());
+                user.setProgram(comboProgram.getSelectedItem().toString());
                 // marks
-                user.setJavaMarks(javaMarks);
-                user.setMathMarks(mathMarks);
-                user.setEnglishMarks(englishMarks);
-                user.setMacroMarks(macroMarks);
+                user.setJavaMarks(textJava.getText().toString());
+                user.setMathMarks(textMath.getText().toString());
+                user.setEnglishMarks(textEnglish.getText().toString());
+                user.setMacroMarks(textMacro.getText().toString());
+
+
                 try {
                     fo.writeFile(user);
-
                 } catch (Exception io) {
                     io.printStackTrace();
                 } finally {
@@ -213,6 +229,12 @@ public class UserMenu {
         btnDisplay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Display display = new Display();
+                try {
+                    // display.display();
+                    display.Display();
+                } catch (Exception ie) {
+                    ie.printStackTrace();
+                }
                 // JOptionPane.showMessageDialog(frame, "Data", "Display",
                 // JOptionPane.INFORMATION_MESSAGE);
 
@@ -231,6 +253,8 @@ public class UserMenu {
                 textMath.setText("");
                 textEnglish.setText("");
                 textMacro.setText("");
+                btnGender.clearSelection();
+                
 
             }
         });
@@ -245,13 +269,4 @@ public class UserMenu {
 
     }
 
-    public static void main(String[] args) throws IOException {
-        try {
-            UserMenu userMenu = new UserMenu();
-
-        } catch (NullPointerException e) {
-
-            e.printStackTrace();
-        }
-    }
 }

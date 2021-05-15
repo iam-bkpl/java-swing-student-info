@@ -7,14 +7,26 @@ import javax.swing.plaf.DimensionUIResource;
 import javax.swing.table.DefaultTableModel;
 
 public class Display {
-    JFrame displayFrame = new JFrame();
-    JTable table = new JTable();
-    DefaultTableModel model = new DefaultTableModel();
-    FileOperation fo = new FileOperation();
-    ArrayList<User> list = new ArrayList<User>();
+    JFrame displayFrame = null;
+    JTable table = null;
+    DefaultTableModel model = null;
+    
+    public void Display() {
+        displayFrame = new JFrame();
+        model = new DefaultTableModel();
+        table = new JTable(model);
+        
+        // ArrayList<User> list = new ArrayList<User>();
+        JScrollPane sp = new JScrollPane(table);
 
-    Display() {
-        // Creating column to display student data
+        // table.setPreferredScrollableViewportSize(new DimensionUIResource(400, 600));
+        // table.setFillsViewportHeight(true);
+
+        table.setSize(800, 800);
+
+        displayFrame.add(sp);
+        displayFrame.setSize(800, 600);
+
         model.addColumn("First Name");
         model.addColumn("Last Name");
         model.addColumn("Gender");
@@ -28,7 +40,9 @@ public class Display {
         model.addColumn("Macro Marks");
 
         // working with files
+        ArrayList<User> list = new ArrayList<User>();
         FileOperation fo = new FileOperation();
+
         list = fo.readFile();
 
         table = new JTable(model);
@@ -42,12 +56,7 @@ public class Display {
             });
 
         }
-        table.setPreferredScrollableViewportSize(new DimensionUIResource(400, 600));
-        table.setFillsViewportHeight(true);
-        JScrollPane sp = new JScrollPane(table);
-
-        displayFrame.add(sp);
-        displayFrame.setSize(800, 600);
+        
         displayFrame.setVisible(true);
     }
 }

@@ -41,7 +41,6 @@ public class Login {
 
         // Buttons
         buttonLogin = new JButton("Login");
-        buttonSignup = new JButton("Signup");
 
         // GridLayout gl = new GridLayout(2, 2, 10, 10);
 
@@ -77,16 +76,16 @@ public class Login {
                 if ((defalutUsername.equals(username)) && (defaultPassword.equals(password))) {
                     // JOptionPane.showMessageDialog(frame, "Login Successful", "Login",
                     // JOptionPane.INFORMATION_MESSAGE);
-                    try {
-                        new UserMenu();
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    // try {
+                        UserMenu userMenu = new UserMenu();
+                    // }catch (IOException e) {
+                    //     e.printStackTrace();
+                    // }
                 } else {
                     JOptionPane.showMessageDialog(frame, "No ID found with the data you provided! Better sign up",
                             "Login", JOptionPane.ERROR_MESSAGE);
                 }
+                
             }
         });
     }
