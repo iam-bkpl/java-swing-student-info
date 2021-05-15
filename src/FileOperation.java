@@ -9,15 +9,16 @@ public class FileOperation {
     User user = new User();
 
     public void writeFile(User user) {
+        BufferedWriter bw = null;
         try {
 
-            BufferedWriter bw = new BufferedWriter(
-                    new FileWriter("student_data.txt"));
+            bw = new BufferedWriter(new FileWriter("student_data.txt", true));
             String data = user.firstName + " " + user.lastName + " " + user.gender + " " + user.address + " "
                     + user.contact + " " + user.rollNo + " " + user.program + " " + user.javaMarks + " "
                     + user.mathMarks + " " + user.englishMarks + " " + user.macroMarks + "\n";
-            bw.append(data);
-            bw.flush();
+            bw.write(data);
+            // bw.newLine();
+            // bw.flush();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,8 +30,7 @@ public class FileOperation {
         ArrayList<User> list = new ArrayList<User>();
 
         try {
-            BufferedReader br = new BufferedReader(
-                    new FileReader("student_data.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("student_data.txt"));
             String line = br.readLine();
 
             while (line != null) {
