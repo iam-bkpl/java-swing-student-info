@@ -61,6 +61,7 @@ public class Login {
         frame.setSize(300, 150);
         frame.add(panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         // When the login button is clicked it will Trigger this
 

@@ -114,7 +114,9 @@ public class UserMenu {
         panelTop.add(lblRollno);
         panelTop.add(textRollno);
 
+
         panelTop.add(lblProgram);
+        comboProgram.setBackground(Color.white);
         panelTop.add(comboProgram);
 
         panelTop.add(lblJava);

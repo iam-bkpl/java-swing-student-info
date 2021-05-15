@@ -12,7 +12,7 @@ public class Display {
     DefaultTableModel model = null;
     
     public void Display() {
-        displayFrame = new JFrame();
+        displayFrame = new JFrame(" *** Student's Data *** ");
         model = new DefaultTableModel();
         table = new JTable(model);
         JScrollPane sp = new JScrollPane(table);
@@ -20,6 +20,7 @@ public class Display {
 
         displayFrame.add(sp);
         displayFrame.setSize(800, 600);
+        displayFrame.setLocation(450,0);
 
         model.addColumn("First Name");
         model.addColumn("Last Name");
