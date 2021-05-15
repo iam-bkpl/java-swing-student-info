@@ -1,3 +1,6 @@
+## RUN MAIN.JAVA
+Run Main.java 
+
 ## Avoid using Global variable, Try to use maximum local variable 
 This will consume your memory and as a result:
 Exception in thread "AWT-EventQueue-0" java.lang.OutOfMemoryError: Java heap space: failed reallocation of scalar replaced objects

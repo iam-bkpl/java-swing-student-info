@@ -6,8 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileOperation {
-    // User user = new User();
-
     public void writeFile(User user) {
         BufferedWriter bw = null;
         try {
@@ -16,8 +14,6 @@ public class FileOperation {
                     + user.contact + " " + user.rollNo + " " + user.program + " " + user.javaMarks + " "
                     + user.mathMarks + " " + user.englishMarks + " " + user.macroMarks + "\n";
             bw.write(data);
-            // bw.newLine();
-            // bw.flush();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();

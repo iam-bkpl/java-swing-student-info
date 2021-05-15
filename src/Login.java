@@ -42,8 +42,6 @@ public class Login {
         // Buttons
         buttonLogin = new JButton("Login");
 
-        // GridLayout gl = new GridLayout(2, 2, 10, 10);
-
         // adding components in panelTop where the top part are stored
         panelTop.add(labelUsername);
         panelTop.add(textUsername);
@@ -74,13 +72,9 @@ public class Login {
                 String password = new String(psdPassword.getPassword()).toString();
 
                 if ((defalutUsername.equals(username)) && (defaultPassword.equals(password))) {
-                    // JOptionPane.showMessageDialog(frame, "Login Successful", "Login",
-                    // JOptionPane.INFORMATION_MESSAGE);
-                    // try {
+                  
                         UserMenu userMenu = new UserMenu();
-                    // }catch (IOException e) {
-                    //     e.printStackTrace();
-                    // }
+                   
                 } else {
                     JOptionPane.showMessageDialog(frame, "No ID found with the data you provided! Better sign up",
                             "Login", JOptionPane.ERROR_MESSAGE);

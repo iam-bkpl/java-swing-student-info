@@ -15,13 +15,7 @@ public class Display {
         displayFrame = new JFrame();
         model = new DefaultTableModel();
         table = new JTable(model);
-        
-        // ArrayList<User> list = new ArrayList<User>();
         JScrollPane sp = new JScrollPane(table);
-
-        // table.setPreferredScrollableViewportSize(new DimensionUIResource(400, 600));
-        // table.setFillsViewportHeight(true);
-
         table.setSize(800, 800);
 
         displayFrame.add(sp);

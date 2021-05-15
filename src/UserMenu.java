@@ -86,8 +86,6 @@ public class UserMenu {
         panelGender.add(btnMale);
         panelGender.add(btnFemale);
         panelTop.setLayout(new GridLayout(12, 2, 10, 10));
-        // panelGender.setLayout();
-        // panelProgram.setLayout(new GridLayout(4, 2, 10, 10));
         panelButton.setLayout(new FlowLayout());
 
         // buttons
@@ -119,15 +117,6 @@ public class UserMenu {
         panelTop.add(lblProgram);
         panelTop.add(comboProgram);
 
-        // panelProgram.add(lblJava);
-        // panelProgram.add(textJava);
-        // panelProgram.add(lblMath);
-        // panelProgram.add(textMath);
-        // panelProgram.add(lblEnglish);
-        // panelProgram.add(textEnglish);
-        // panelProgram.add(lblMacro);
-        // panelProgram.add(textMacro);
-
         panelTop.add(lblJava);
         panelTop.add(textJava);
 
@@ -141,8 +130,6 @@ public class UserMenu {
         panelTop.add(textMacro);
 
         panelMain.add(panelTop);
-        // panelMain.add(panelProgram);
-
         // adding buttons
         panelButton.add(btnAdd);
         panelButton.add(btnReset);
@@ -158,20 +145,6 @@ public class UserMenu {
         // adding action Listener to buttons
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // variables to store data that is entered in dashboard
-                // String firstName = textFirstName.getText().toString();
-                // String lastName = textLastName.getText().toString();
-                // String gender = "";
-                // String address = textAddress.getText().toString();
-                // String contact = textContact.getText().toString();
-                // String rollNo = textRollno.getText().toString();
-                // String program = comboProgram.getSelectedItem().toString();
-
-                // marks
-                // String javaMarks = textJava.getText().toString();
-                // String mathMarks = textMath.getText().toString();
-                // String englishMarks = textEnglish.getText().toString();
-                // String macroMarks = textMacro.getText().toString();
                 // Finding gender
                 String gender = "";
                 if (btnMale.isSelected()) {
@@ -185,21 +158,6 @@ public class UserMenu {
                 // creating user object
                 User user = new User();
                 FileOperation fo = new FileOperation();
-
-                // passing data entred in dashboard to the user object
-                // user.setFirstName(firstName);
-                // user.setLastName(lastName);
-                // user.setGender(gender);
-                // user.setAddress(address);
-                // user.setContact(contact);
-                // user.setRollno(rollNo);
-                // user.setProgram(program);
-                // // marks
-                // user.setJavaMarks(javaMarks);
-                // user.setMathMarks(mathMarks);
-                // user.setEnglishMarks(englishMarks);
-                // user.setMacroMarks(macroMarks);
-
                 user.setFirstName(textFirstName.getText().toString());
                 user.setLastName(textLastName.getText().toString());
                 user.setGender(gender);
@@ -235,9 +193,7 @@ public class UserMenu {
                 } catch (Exception ie) {
                     ie.printStackTrace();
                 }
-                // JOptionPane.showMessageDialog(frame, "Data", "Display",
-                // JOptionPane.INFORMATION_MESSAGE);
-
+              
             }
         });
 
