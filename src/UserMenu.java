@@ -78,7 +78,7 @@ public class UserMenu {
         btnGender.add(btnFemale);
 
         // Program
-        String[] programs = { "---", "BCIS", "BCA", "BIT", "BSCIT", "BIM" };
+        String[] programs = { "", "BCIS", "BCA", "BIT", "BSCIT", "BIM" };
 
         comboProgram = new JComboBox(programs);
 
@@ -152,7 +152,7 @@ public class UserMenu {
                 } else if (btnFemale.isSelected()) {
                     gender = "Female";
                 } else {
-                    gender = "-";
+                    gender = "";
                 }
 
                 // creating user object
@@ -210,6 +210,7 @@ public class UserMenu {
                 textEnglish.setText("");
                 textMacro.setText("");
                 btnGender.clearSelection();
+                comboProgram.setSelectedIndex(0);
                 
 
             }
