@@ -12,7 +12,7 @@ public class FileOperation {
         try {
 
             BufferedWriter bw = new BufferedWriter(
-                    new FileWriter("/home/bkpl/Second_Semester/Java/SwingProject/StudentInfo/src/student_data.txt"));
+                    new FileWriter("student_data.txt"));
             String data = user.firstName + " " + user.lastName + " " + user.gender + " " + user.address + " "
                     + user.contact + " " + user.rollNo + " " + user.program + " " + user.javaMarks + " "
                     + user.mathMarks + " " + user.englishMarks + " " + user.macroMarks + "\n";
@@ -30,7 +30,7 @@ public class FileOperation {
 
         try {
             BufferedReader br = new BufferedReader(
-                    new FileReader("/home/bkpl/Second_Semester/Java/SwingProject/StudentInfo/src/student_data.txt"));
+                    new FileReader("student_data.txt"));
             String line = br.readLine();
 
             while (line != null) {
