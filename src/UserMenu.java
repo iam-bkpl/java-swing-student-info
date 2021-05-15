@@ -174,8 +174,10 @@ public class UserMenu {
                 // Finding gender
                 if (btnMale.isSelected()) {
                     gender = "Male";
-                } else {
+                } else if(btnFemale.isSelected()) {
                     gender = "Female";
+                } else {
+                    gender = "-";
                 }
 
                 // creating user object
