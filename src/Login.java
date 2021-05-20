@@ -68,17 +68,22 @@ public class Login {
         buttonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String username = textUsername.getText().toString();
+                String username = textUsername.getText().toString().trim();
 
-                String password = new String(psdPassword.getPassword()).toString();
-
-                if ((defalutUsername.equals(username)) && (defaultPassword.equals(password))) {
-                  
-                        UserMenu userMenu = new UserMenu();
-                   
+                String password = new String(psdPassword.getPassword()).toString().trim();
+                if (username.length() == 0 || password.length() == 0) {
+                    JOptionPane.showMessageDialog(frame, "Please fill the fields corectly",
+                            "Login", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(frame, "No ID found with the data you provided! Better sign up",
-                            "Login", JOptionPane.ERROR_MESSAGE);
+
+                    if ((defalutUsername.equals(username)) && (defaultPassword.equals(password))) {
+
+                        UserMenu userMenu = new UserMenu();
+
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "No ID found with the data you provided!", "Login",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 
             }
