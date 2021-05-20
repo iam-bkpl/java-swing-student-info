@@ -100,5 +100,8 @@ public class User {
     public String getMacroMarks() {
         return macroMarks;
     }
+    public static void main(String[] args) {
+        Login login = new Login();
+    }
 
 }

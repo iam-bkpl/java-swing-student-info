@@ -1,16 +1,12 @@
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.plaf.DimensionUIResource;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
 
 public class Display {
     JFrame displayFrame = null;
     JTable table = null;
     DefaultTableModel model = null;
-    
+
     public void Display() {
         displayFrame = new JFrame(" *** Student's Data *** ");
         model = new DefaultTableModel();
@@ -20,7 +16,7 @@ public class Display {
 
         displayFrame.add(sp);
         displayFrame.setSize(800, 600);
-        displayFrame.setLocation(450,0);
+        displayFrame.setLocation(450, 0);
 
         model.addColumn("First Name");
         model.addColumn("Last Name");
@@ -39,19 +35,23 @@ public class Display {
         FileOperation fo = new FileOperation();
 
         list = fo.readFile();
+        if (list.size() == 0) {
+            JOptionPane.showMessageDialog(displayFrame, "File is empty Please add some data to display", "Empty File",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            table = new JTable(model);
 
-        table = new JTable(model);
-        for (int i = 0; i < list.size(); i++) {
-            User user = new User();
-            user = list.get(i);
-            model.addRow(new Object[] { user.getFirstName(), user.getLastName(), user.getGender(), user.getAddress(),
-                    user.getContact(), user.getRollNo(), user.getProgram(), user.getJavaMarks(), user.getMathMarks(),
-                    user.getEnglishMarks(), user.getMacroMarks()
+            for (int i = 0; i < list.size(); i++) {
+                User user = new User();
+                user = list.get(i);
+                model.addRow(new Object[] { user.getFirstName(), user.getLastName(), user.getGender(),
+                        user.getAddress(), user.getContact(), user.getRollNo(), user.getProgram(), user.getJavaMarks(),
+                        user.getMathMarks(), user.getEnglishMarks(), user.getMacroMarks()
 
-            });
+                });
 
+            }
+            displayFrame.setVisible(true);
         }
-        
-        displayFrame.setVisible(true);
     }
 }

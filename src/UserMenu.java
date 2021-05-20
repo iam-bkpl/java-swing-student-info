@@ -6,7 +6,7 @@ import java.io.IOException;
 public class UserMenu {
     JFrame frame = new JFrame();
     // pannel's to add components
-    
+
     // Getting user data in text
     JTextField textFirstName = null;
     JTextField textLastName = null;
@@ -17,7 +17,7 @@ public class UserMenu {
     JTextField textMath = null;
     JTextField textEnglish = null;
     JTextField textMacro = null;
-    
+
     // getting user data in radiobuttons
     JRadioButton btnMale = null;
     JRadioButton btnFemale = null;
@@ -25,7 +25,7 @@ public class UserMenu {
     ButtonGroup btnGender = null;
     // store miltiple data with select one feature
     JComboBox comboProgram = null;
-    
+
     // Buttons
     JButton btnAdd = null;
     JButton btnDisplay = null;
@@ -33,8 +33,8 @@ public class UserMenu {
     JButton btnCancel = null;
 
     UserMenu() {
-    
-    frame = new JFrame("User Menu");
+
+        frame = new JFrame("User Menu");
         // panels
         JPanel panelTop = new JPanel();
         JPanel panelGender = new JPanel();
@@ -114,7 +114,6 @@ public class UserMenu {
         panelTop.add(lblRollno);
         panelTop.add(textRollno);
 
-
         panelTop.add(lblProgram);
         comboProgram.setBackground(Color.white);
         panelTop.add(comboProgram);
@@ -147,8 +146,25 @@ public class UserMenu {
         // adding action Listener to buttons
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Finding gender
+
+                // creating user object
+                User user = new User();
+                FileOperation fo = new FileOperation();
+
+                String firstName = textFirstName.getText().toString().trim();
+                String lastName = textLastName.getText().toString().trim();
                 String gender = "";
+                String address = textAddress.getText().toString().trim();
+                String contact = textContact.getText().toString().trim();
+                String rollNo = textRollno.getText().toString().trim();
+                String program = comboProgram.getSelectedItem().toString().trim();
+
+                // marks
+                String javaMarks = textJava.getText().toString().trim();
+                String mathMarks = textMath.getText().toString().trim();
+                String englishMarks = textEnglish.getText().toString().trim();
+                String macroMarks = textMacro.getText().toString().trim();
+                // Finding gender
                 if (btnMale.isSelected()) {
                     gender = "Male";
                 } else if (btnFemale.isSelected()) {
@@ -156,31 +172,37 @@ public class UserMenu {
                 } else {
                     gender = "";
                 }
+                if (firstName.length() == 0 || lastName.length()==0 || gender.length() == 0 
+                        || address.length() == 0 || contact.length() == 0 || rollNo.length() == 0 
+                        || program.length() == 0 || javaMarks.length() == 0 || mathMarks.length() == 0 
+                        || englishMarks.length() == 0 || macroMarks.length() == 0) {
 
-                // creating user object
-                User user = new User();
-                FileOperation fo = new FileOperation();
-                user.setFirstName(textFirstName.getText().toString());
-                user.setLastName(textLastName.getText().toString());
-                user.setGender(gender);
-                user.setAddress(textAddress.getText().toString());
-                user.setContact(textContact.getText().toString());
-                user.setRollno(textRollno.getText().toString());
-                user.setProgram(comboProgram.getSelectedItem().toString());
-                // marks
-                user.setJavaMarks(textJava.getText().toString());
-                user.setMathMarks(textMath.getText().toString());
-                user.setEnglishMarks(textEnglish.getText().toString());
-                user.setMacroMarks(textMacro.getText().toString());
+                        JOptionPane.showMessageDialog(frame, "Please fill the data corectly", "Input Error", JOptionPane.INFORMATION_MESSAGE);
+                } else {
 
+                    // passing data entred in dashboard to the user object
+                    user.setFirstName(firstName);
+                    user.setLastName(lastName);
+                    user.setGender(gender);
+                    user.setAddress(address);
+                    user.setContact(contact);
+                    user.setRollno(rollNo);
+                    user.setProgram(program);
+                    // marks
+                    user.setJavaMarks(javaMarks);
+                    user.setMathMarks(mathMarks);
+                    user.setEnglishMarks(englishMarks);
+                    user.setMacroMarks(macroMarks);
 
-                try {
-                    fo.writeFile(user);
-                } catch (Exception io) {
-                    io.printStackTrace();
-                } finally {
-                    JOptionPane.showMessageDialog(frame, "Added to the file", "Add", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        fo.writeFile(user);
+                    } catch (Exception io) {
+                        io.printStackTrace();
+                    } finally {
+                        JOptionPane.showMessageDialog(frame, "Added to the file", "Add",
+                                JOptionPane.INFORMATION_MESSAGE);
 
+                    }
                 }
 
             }
@@ -195,7 +217,7 @@ public class UserMenu {
                 } catch (Exception ie) {
                     ie.printStackTrace();
                 }
-              
+
             }
         });
 
@@ -213,7 +235,6 @@ public class UserMenu {
                 textMacro.setText("");
                 btnGender.clearSelection();
                 comboProgram.setSelectedIndex(0);
-                
 
             }
         });
